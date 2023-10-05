@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<br>
+<h1 style="color: #040404; font-size: 24px; text-align: center; margin: 40px 0 15px;">Delivery Time Prediction</h1>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Prediction App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #b7f0f3;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        /* Smaller input boxes */
+        input[type="number"] {
+            width: 100%;
+            padding: 5px; /* Reduced padding */
+            margin-bottom: 10px; /* Reduced margin */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px; /* Smaller font size */
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px; /* Smaller font size */
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            color: #007bff;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 1.5em; /* Smaller font size */
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #333;
+            text-align: center;
+        }
+
+        
+        /* Add this CSS to your existing styles */
+        .result-container {
+            text-align: center;
+            position: relative;
+        }
+
+        .result-heading {
+            color: #007bff;
+            font-size: 1.5em;
+        }
+
+        .result-text {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        /* Celebratory animation */
+        .celebration-animation {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes confetti {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-300px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f39c12; /* Color of the sparks */
+            border-radius: 50%;
+            transform: rotate(45deg);
+            animation: confetti 2s ease-out forwards;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <h1>Delivery Time Prediction</h1>
+
+    <form method="POST" action="/predict">
+        <label for="Road_traffic_density">Road Traffic Density ("Low":1,"Medium":2,"High":3,"Jam":4):</label>
+        <input type="number" name="Road_traffic_density" required><br><br>
+
+        <label for="multiple_deliveries">Multiple Deliveries (0-3):</label>
+        <input type="number" name="multiple_deliveries" required><br><br>
+
+        <label for="Delivery_person_Ratings">Delivery Person Ratings (1-5):</label>
+        <input type="number" name="Delivery_person_Ratings" required><br><br>
+
+        <label for="Vehicle_condition">Vehicle Condition (0-3):</label>
+        <input type="number" name="Vehicle_condition" required><br><br>
+
+        <label for="Weather_conditions">Weather Conditions ("Sunny":1,"Windy":3,"Sandstorms":4,"Stormy":4,"Fog":3,"Cloudy":2):</label>
+        <input type="number" name="Weather_conditions" required><br><br>
+
+        <label for="Type_of_vehicle">Type of Vehicle ("scooter":1,"electric_scooter":1,"bicycle":2,"motorcycle":2):</label>
+        <input type="number" name="Type_of_vehicle" required><br><br>
+
+        <label for="Distance">Distance (in kilometers):</label>
+        <input type="number" name="Distance" required><br><br>
+
+        <label for="Delivery_person_Age">Delivery Person Age:</label>
+        <input type="number" name="Delivery_person_Age" required><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+
+    {% if result %}
+    <div class="result-container">
+        <h2 class="result-heading">Predicted Delivery Time:</h2>
+        <p class="result-text">{{ result[0] }} minutes</p>
+        <div class="celebration-animation" id="celebration"></div>
+    </div>
+    {% endif %}
+
+    
+</body>
+
+</html>
+
+
