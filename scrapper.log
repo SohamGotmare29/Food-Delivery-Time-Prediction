@@ -2,3 +2,7 @@ INFO:numexpr.utils:NumExpr defaulting to 4 threads.
 WARNING:werkzeug: * Running on all addresses.
    WARNING: This is a development server. Do not use it in a production deployment.
 INFO:werkzeug: * Running on http://192.168.1.6:5001/ (Press CTRL+C to quit)
+INFO:numexpr.utils:NumExpr defaulting to 4 threads.
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.1.6:5001/ (Press CTRL+C to quit)

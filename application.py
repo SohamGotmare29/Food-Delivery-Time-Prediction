@@ -3,8 +3,8 @@ import pickle
 import numpy as np
 
 #logging
-import logging
-logging.basicConfig(filename="scrapper.log" , level=logging.DEBUG)
+##import logging
+#logging.basicConfig(filename="scrapper.log" , level=logging.DEBUG)
 
 #load model 
 model = pickle.load(open('newmodel.pkl', 'rb'))
@@ -39,4 +39,4 @@ def predict_time():
         return render_template('indexs.html', result=result)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5001)
+    app.run(host='0.0.0.0')
